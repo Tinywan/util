@@ -1,0 +1,20 @@
+{
+  "name": "tinywan/util",
+  "description": "php util",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^7.4",
+    "ext-mbstring": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "tinywan\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "tinywan\\tests\\": "tests/"
+    }
+  }
+}
