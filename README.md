@@ -1,2 +1,6 @@
-# util
-php composer util
+## composer install
+
+```phpregexp
+
+composer require tinywan/util
+```
