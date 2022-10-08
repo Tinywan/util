@@ -30,7 +30,7 @@ trait StaticErrorMessage
      * @param array $data
      * @return bool
      */
-    public static function setError(bool $success, string $message, array $data): bool
+    public static function setError(bool $success, string $message, array $data = []): bool
     {
         self::$message = $message;
         self::$data = $data;
