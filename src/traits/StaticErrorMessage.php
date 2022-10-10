@@ -48,10 +48,10 @@ trait StaticErrorMessage
 
     /**
      * @desc 获取错误数据
-     * @return string
+     * @return array
      */
-    public static function getData(): string
+    public static function getData(): array
     {
-        return self::$message;
+        return self::$data;
     }
 }
