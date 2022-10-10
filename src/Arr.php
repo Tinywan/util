@@ -18,6 +18,31 @@ class Arr
 {
 
     /**
+     * @desc: generateTree 生成树
+     * @param array $array
+     * @param string $id
+     * @param string $parentId
+     * @return array
+     * @author Tinywan(ShaoBo Wan)
+     */
+    public function generateTree(array $array, string $id = 'id', string  $parentId = 'parent_id'): array
+    {
+        $items = [];
+        foreach($array as $v){
+            $items[$v[$id]] = $v;
+        }
+        $tree = [];
+        foreach($items as $key => $value){
+            if(isset($items[$value[$parentId]])){
+                $items[$value[$parentId]]['children'][] = &$value;
+            }else{
+                $tree[] = &$items[$key];
+            }
+        }
+        return $tree;
+    }
+
+    /**
      * Determine whether the given value is array accessible.
      *
      * @param mixed $value
