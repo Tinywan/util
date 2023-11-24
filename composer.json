@@ -5,7 +5,8 @@
   "license": "MIT",
   "require": {
     "php": "^7.4",
-    "ext-mbstring": "*"
+    "ext-mbstring": "*",
+    "ext-openssl": "*"
   },
   "autoload": {
     "psr-4": {
