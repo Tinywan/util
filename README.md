@@ -39,7 +39,8 @@ class Test
 
 ### 静态复用
 
-使用类
+> 使用类
+
 ```php
 class UserService
 {
@@ -54,7 +55,8 @@ class UserService
 }
 ```
 
-调用类
+> 调用类
+
 ```php
 use \tinywan\traits\StaticErrorMessage;
 
