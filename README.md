@@ -4,70 +4,36 @@
 composer require tinywan/util
 ```
 
-## Trait代码复用
+## 加解密
 
-### 动态复用
-使用类
-```php
-class UserService
-{
-    use \tinywan\traits\ErrorMessage;
-    
-    public function updatePassword(array $param)
-    {
-        if (empty($param)) {
-            return $this->setError(false, '用户名或者密码不能为空');
-        }
-    }
-}
-```
-
-调用类
-```php
-class Test
-{
-    public function user(array $param)
-    {
-        $user = new UserService();
-        $response = $user->updatePassword([]);
-        if (false === $response) {
-            return $user->getMessage(); // 用户名或者密码不能为空
-        }
-    }
-}
-```
-
-### 静态复用
-
-> 使用类
+### 加密
 
 ```php
-class UserService
-{
-    use \tinywan\traits\StaticErrorMessage;
-    
-    public static function updatePassword(array $param)
-    {
-        if (empty($param)) {
-            return self::setError(false, '用户名或者密码不能为空');
-        }
-    }
-}
-```
+$key = '2024PpTJIR1aYFiFh0PppZzE';
 
-> 调用类
+// 加密内容
+$content = [
+    'name' => 'Tinywan',
+    'school' => 'ZheJiang University',
+    'age' => 24,
+    'github' => [
+        'home' => 'https://github.com/Tinywan',
+        'start' => '6.8k',
+    ],
+];
+
+// 必须转换为字符串
+$dataJson = json_encode($content, JSON_UNESCAPED_UNICODE);
+$decrypt = \tinywan\crypto\EncryptionUtil::encrypt($dataJson, $key);
+var_dump($decrypt);
+```
+### 解密
 
 ```php
-use \tinywan\traits\StaticErrorMessage;
+$key = '2024PpTJIR1aYFiFh0PppZzE';
 
-class Test
-{
-    public static function user(array $param)
-    {
-        $response = UserService::updatePassword([]);
-        if (false === $response) {
-            return UserService::getMessage(); // 用户名或者密码不能为空
-        }
-    }
-}
+$decrypt = 'Dow1jTTBpriQUPLWFDli0BEjwn5Y3QG65TDWacyn/VRbxxxxxxxxxxxxxxxxd5ETvVbau4=';
+$encrypt = \tinywan\crypto\EncryptionUtil::decrypt($decrypt, $key);
+var_dump($encrypt);
 ```
+
