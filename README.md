@@ -37,3 +37,19 @@ $encrypt = \tinywan\crypto\EncryptionUtil::decrypt($decrypt, $key);
 var_dump($encrypt);
 ```
 
+## SM4
+
+```php
+// 32位key
+$key = '4d7f2e7fe8e450385253bf379b13e432';
+
+// 获取对应算法密码iv长度
+$ivLength = openssl_cipher_iv_length(\tinywan\crypto\SM4Util::SM4_CBC);
+$iv = (string) rand(pow(10, ($ivLength - 1)), pow(10, $ivLength) - 1);
+
+// 加密字符串
+$plaintext = '开源技术小栈';
+$ciphertext = self::encrypt($plaintext, $key, $iv);
+printf("加密结果1: %s\n", $ciphertext);
+printf("解密结果2: %s\n", self::decrypt($ciphertext, $key, $iv));
+```
